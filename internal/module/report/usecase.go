@@ -5,8 +5,8 @@ import "go-api/internal/entity"
 type Usecase interface {
 	GetAll() ([]entity.Report, error)
 	Create(title string) error
-	Approve(ids []uint, reason string) error
-	Reject(ids []uint, reason string) error
+	Approve(ids []string, reason string) error
+	Reject(ids []string, reason string) error
 }
 
 type usecase struct {
@@ -28,10 +28,10 @@ func (u *usecase) Create(title string) error {
 	})
 }
 
-func (u *usecase) Approve(ids []uint, reason string) error {
+func (u *usecase) Approve(ids []string, reason string) error {
 	return u.repo.UpdateStatus(ids, entity.StatusApproved, reason)
 }
 
-func (u *usecase) Reject(ids []uint, reason string) error {
+func (u *usecase) Reject(ids []string, reason string) error {
 	return u.repo.UpdateStatus(ids, entity.StatusRejected, reason)
 }
