@@ -8,7 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var secret = []byte("my-secret") // TODO: ย้ายไป env
+var secret = []byte("my-secret") 
 
 type Claims struct {
 	UserID string `json:"user_id"`
