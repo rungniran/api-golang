@@ -28,21 +28,21 @@ func (r *repo) Create(report *entity.Report) error {
 	return r.db.Create(report).Error
 }
 
-// func (r *repo) UpdateStatus(ids []string, status string, reason string) error {
-// 	return r.db.Model(&entity.Report{}).
-// 		Where("id IN ?", ids).
-// 		Where("status = ?", entity.StatusPending).
-// 		Updates(map[string]interface{}{
-// 			"status": status,
-// 			"reason": reason,
-// 		}).Error
-// }
-
 func (r *repo) UpdateStatus(ids []string, status string, reason string) error {
 	return r.db.Model(&entity.Report{}).
 		Where("id IN ?", ids).
+		Where("status = ?", entity.StatusPending).
 		Updates(map[string]interface{}{
 			"status": status,
 			"reason": reason,
 		}).Error
 }
+
+// func (r *repo) UpdateStatus(ids []string, status string, reason string) error {
+// 	return r.db.Model(&entity.Report{}).
+// 		Where("id IN ?", ids).
+// 		Updates(map[string]interface{}{
+// 			"status": status,
+// 			"reason": reason,
+// 		}).Error
+// }
