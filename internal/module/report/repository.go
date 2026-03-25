@@ -2,7 +2,6 @@ package report
 
 import (
 	"go-api/internal/entity"
-
 	"gorm.io/gorm"
 )
 
